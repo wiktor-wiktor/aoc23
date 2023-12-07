@@ -4,7 +4,7 @@ export const x = '';
 
 const fs = require('fs');
 
-const input = fs.readFileSync('./input.txt', 'utf8');
+const input = fs.readFileSync('./input-2.txt', 'utf8');
 const lines: string[] = input.split('\n');
 
 type agroMap = {
