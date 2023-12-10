@@ -34,7 +34,6 @@ const HAND_TYPES_ORDER: handType[] = ['5', '4', 'F', '3', '22', '2', 'H'];
 
 const getHandType = (hand: hand): handType => {
     const cards = hand.cards;
-    const bid = hand.bid;
 
     const cardCount: { [key in card]: number } = {
         'A': 0,
@@ -53,7 +52,7 @@ const getHandType = (hand: hand): handType => {
     };
 
     let currentMostAmount = 0;
-    let currentMostAmountCardType: card = 'A';
+    let currentMostAmountCardType: card = cards[0];
     let amountOfJs = 0;
     cards.forEach(card => {
         if (card === 'J') {
@@ -76,9 +75,7 @@ const getHandType = (hand: hand): handType => {
     const hasTwo = cardCountValues.includes(2);
     const numberOfTwos = cardCountValues.filter(value => value === 2).length;
 
-    const hasFlush = cards.every(card => card === cards[0]);
-
-    if (hasFive && hasFlush) {
+    if (hasFive) {
         return '5';
     }
 

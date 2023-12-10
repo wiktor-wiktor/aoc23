@@ -21,7 +21,6 @@ for (var i = 0; i < lines.length; i++) {
 var HAND_TYPES_ORDER = ['5', '4', 'F', '3', '22', '2', 'H'];
 var getHandType = function (hand) {
     var cards = hand.cards;
-    var bid = hand.bid;
     var cardCount = {
         'A': 0,
         'K': 0,
@@ -38,7 +37,7 @@ var getHandType = function (hand) {
         '2': 0
     };
     var currentMostAmount = 0;
-    var currentMostAmountCardType = 'A';
+    var currentMostAmountCardType = cards[0];
     var amountOfJs = 0;
     cards.forEach(function (card) {
         if (card === 'J') {
@@ -59,8 +58,7 @@ var getHandType = function (hand) {
     var hasThree = cardCountValues.includes(3);
     var hasTwo = cardCountValues.includes(2);
     var numberOfTwos = cardCountValues.filter(function (value) { return value === 2; }).length;
-    var hasFlush = cards.every(function (card) { return card === cards[0]; });
-    if (hasFive && hasFlush) {
+    if (hasFive) {
         return '5';
     }
     if (hasFour) {
